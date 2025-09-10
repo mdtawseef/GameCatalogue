@@ -1,0 +1,34 @@
+<div class="container mt-4">
+  <h2>Game Catalogue</h2>
+
+  <div *ngIf="loading" class="alert alert-info">Loading games...</div>
+
+  <table class="table table-striped" *ngIf="!loading && games.length > 0">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Genre</th>
+        <th>Platform</th>
+        <th class="text-end">Price</th>
+        <th>Release Date</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let g of games">
+        <td>{{ g.title }}</td>
+        <td>{{ g.genre }}</td>
+        <td>{{ platformName(g.platform) }}</td>
+        <td class="text-end">{{ g.price | currency }}</td>
+        <td>{{ g.releaseDate || '-' }}</td>
+        <td class="text-end">
+          <button class="btn btn-sm btn-outline-secondary" (click)="editGame(g.id)">Edit</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!loading && games.length === 0" class="alert alert-info">
+    No games available.
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="container mt-4">
+  <h2>Edit Game</h2>
+  <form #f="ngForm" (ngSubmit)="save()">
+    <div class="mb-3">
+      <label class="form-label">Title</label>
+      <input class="form-control" name="title" [(ngModel)]="game.title">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Genre</label>
+      <input class="form-control" name="genre" [(ngModel)]="game.genre">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Platform</label>
+      <select class="form-select" name="platform" [(ngModel)]="game.platform">
+        <option *ngFor="let p of platformOptions" [value]="p.value">
+          {{ p.label }}
+        </option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Price</label>
+      <input class="form-control" type="number" name="price" [(ngModel)]="game.price">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Release Date</label>
+      <input class="form-control" type="date" name="releaseDate" [(ngModel)]="game.releaseDate">
+    </div>
+
+    <button class="btn btn-primary" type="submit">Save</button>
+  </form>
+</div>
